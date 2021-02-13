@@ -22,15 +22,19 @@ def basic_cleaning():
 
     return df
 
-def get_time_series_based_on_countries(df,lst_of_countries,entrd_lag=3,get_acf = False, get_model=False):
+def time_series_stuff(df,lst_of_countries,entrd_lag=3,get_acf = False, get_model=False):
     """
     Takes a dataframe and a list of interested countries
     shows a plot of the countries' CPI throughout time
 
     :param df: pandas dataframe
     :param lst_of_countries: list of ISO3 country codes
+    :param entrd_lag: number of lags in the model
+    :param get_acf: True if you want ACF/PACF graphs
+    :param get_model: True if you want the AR models
+                        for each country in lst_of_countries
     :return: if get_model, then returns the dictionary containing all models,
-                elif get_acf, then plots the ACF/PACF plots
+                if, get_acf, then plots the ACF/PACF plots
                 else, returns the dataframe in time-series ready form
     """
 
@@ -73,4 +77,4 @@ print(gdf.head())
 
 interesting_countries = ['USA','DNK','SWE','POL','BLR','RUS']
 time_series = ['USA','RUS']
-get_time_series_based_on_countries(gdf,time_series,get_acf=False,entrd_lag=3,get_model=True)
+time_series_stuff(gdf,time_series,get_acf=False,entrd_lag=3,get_model=True)
